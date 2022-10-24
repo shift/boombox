@@ -1,4 +1,4 @@
-FROM docker.io/library/archlinux@sha256:21995dec139a4ebaa2919ddddc0cd2f84a0ca2f9a58722333d53bcf460f9a4ee
+FROM docker.io/library/archlinux
 
 COPY hack/host-runner /usr/libexec/toolbox/host-runner
 COPY hack/pkgs.arch /opt/pkgs
@@ -62,6 +62,8 @@ RUN \
     cat .SRCINFO && \
     mv .SRCINFO /opt/paru.SRCINFO && \
     cd / && \
+    rm -rf /home/makepkg/paru && \
+    sudo -u makepkg /usr/sbin/paru -Syu --noconfirm --skipreview --needed $(cat /opt/pkgs | xargs) && \
     userdel makepkg && \
     rm -rf /root && rm -rf /home/makepkg && \
     mkdir /root && \
@@ -83,5 +85,5 @@ LABEL com.github.containers.toolbox="true" \
       version="$VERSION" \
       usage="This image is meant to be used with the toolbox command" \
       summary="Arch toolbox" \
-      maintainer="Anthony Rabbito <hello@anthonyrabbito.com>, Devin Buhl <devin.kray@gmail.com>, Ryan Walter <rwalt@pm.me>, Stefan Crain <stefancrain@gmail.com>"
+      maintainer="Vincent Palmer <shift@someone.section.me>, Anthony Rabbito <hello@anthonyrabbito.com>, Devin Buhl <devin.kray@gmail.com>, Ryan Walter <rwalt@pm.me>, Stefan Crain <stefancrain@gmail.com>"
 

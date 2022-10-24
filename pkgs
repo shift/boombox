@@ -1,9 +1,11 @@
 zsh
 podman-remote
+pcsclite-toolbox
 lsd
 calicoctl
 croc
 kubie-bin
+shfmt-bin
 starship
 stern-bin
 velero-bin
@@ -16,6 +18,7 @@ dog
 helm
 argo-bin
 trivy-bin
+kubectl
 kubeval-bin
 flux-bin
 hadolint-bin
@@ -34,5 +37,4 @@ opensc
 fzf
 tmux
 kustomize
-yubico-piv-tool
 awsume
